@@ -7,9 +7,9 @@ Multi-sensor anomaly detection using synthetic data. The project simulates tempe
 - Visualization of detected anomalies
 
 ## Structure
-Sensor-Fusion-Anomaly/
-├── data/
-│   └── synthetic_sensors.csv
+Sensor-Fusion-Anomaly/<br/>
+├── data/ <br/>
+│   └── synthetic_sensors.csv <br/>
 ├── src/
 │   ├── generate_data.py
 │   ├── anomaly_detection.py
