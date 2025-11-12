@@ -10,12 +10,12 @@ Multi-sensor anomaly detection using synthetic data. The project simulates tempe
 Sensor-Fusion-Anomaly/<br/>
 ├── data/ <br/>
 │   └── synthetic_sensors.csv <br/>
-├── src/
-│   ├── generate_data.py
-│   ├── anomaly_detection.py
-│   └── visualize.py
-├── README.md
-├── requirements.txt
+├── src/ <br/>
+│   ├── generate_data.py <br/>
+│   ├── anomaly_detection.py <br/>
+│   └── visualize.py <br/>
+├── README.md <br/>
+├── requirements.txt <br/>
 └── .gitignore
 
 ## How to run
