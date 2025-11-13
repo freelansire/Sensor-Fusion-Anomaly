@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+
+# Seed for reproducibility
+np.random.seed(42)
+
+# Generate synthetic sensor readings
+timestamps = pd.date_range(start='2025-01-01', periods=1000, freq='H')
+temperature = np.random.normal(25, 1, size=len(timestamps))
+humidity = np.random.normal(50, 5, size=len(timestamps))
+pressure = np.random.normal(1013, 3, size=len(timestamps))
+
+# Inject anomalies
+temperature[::100] += np.random.normal(10, 2, size=10)
+humidity[::120] += np.random.normal(15, 3, size=9)
+pressure[::150] -= np.random.normal(15, 4, size=7)
+
+df = pd.DataFrame({
+    'timestamp': timestamps,
+    'temperature': temperature,
+    'humidity': humidity,
+    'pressure': pressure
+})
+
+df.to_csv('../data/synthetic_sensors.csv', index=False)
+print("Synthetic sensor data saved to data/synthetic_sensors.csv")
