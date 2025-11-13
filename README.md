@@ -36,13 +36,13 @@ python stream_fusion.py
 
 
 ## Structure
-Sensor-Fusion-Anomaly/<br/>
-├── data/ <br/>
-│   └── synthetic_sensors.csv <br/>
-├── src/ <br/>
-│   ├── stream_fusion.py <br/>
-│   ├── utils.py <br/>
-│   └── visualize_live.py <br/>
-├── README.md <br/>
-├── requirements.txt <br/>
+Sensor-Fusion-Anomaly/
+├── data/ 
+│   └── synthetic_sensors.csv 
+├── src/ 
+│   ├── stream_fusion.py 
+│   ├── utils.py 
+│   └── visualize_live.py 
+├── README.md 
+├── requirements.txt 
 └── .gitignore
