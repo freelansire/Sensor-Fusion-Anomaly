@@ -1,11 +1,39 @@
-# Sensor-Fusion-Anomaly
-This project demonstrates **real-time multi-sensor anomaly detection** using lightweight data fusion and streaming simulation.
+# 🛰️ Sensor-Fusion-Anomaly
+*A real-time lightweight anomaly detection framework for multi-sensor data streams.*
 
-## Features
-- Simulated streaming from temperature, humidity, and pressure sensors
-- Adaptive anomaly detection using Isolation Forest
-- Live updating Matplotlib visualization
-- Lightweight, reproducible, and educational for IoT / AI research demos
+![Demo](./demo.gif)
+
+## 🔍 Overview
+This repository demonstrates a **real-time anomaly detection prototype** that fuses readings from multiple simulated sensors (temperature, humidity, pressure) and detects irregularities using a lightweight **Isolation Forest** model.  
+It showcases a practical application of **sensor fusion**, **stream processing**, and **adaptive machine learning** — principles central to modern IoT and cyber-physical systems.
+
+---
+
+## ⚙️ Features
+- 📡 Synthetic multi-sensor streaming (temperature, humidity, pressure)  
+- 🧠 Adaptive anomaly detection using Isolation Forest  
+- 🔁 Real-time visualisation with Matplotlib (auto-refreshing live plot)  
+- 🧩 Modular and lightweight – runs in <100 lines of Python  
+- 💡 Demonstrates principles of edge AI, IoT monitoring, and streaming analytics  
+
+---
+
+## 🧠 Methodology
+1. **Sensor Simulation:** Sensors generate time-correlated signals with random Gaussian noise and injected outliers.  
+2. **Feature Fusion:** Incoming data are combined into a small rolling window to represent the system state.  
+3. **Adaptive Learning:** Isolation Forest updates on the window to detect deviations from learned normal patterns.  
+4. **Real-Time Feedback:** Anomalies appear live as red markers on a continuous temperature plot.  
+
+---
+
+## 🚀 Run Locally
+```bash
+git clone https://github.com/yourusername/Sensor-Fusion-Anomaly.git
+cd Sensor-Fusion-Anomaly
+pip install -r requirements.txt
+cd src
+python stream_fusion.py
+
 
 ## Structure
 Sensor-Fusion-Anomaly/<br/>
@@ -18,17 +46,3 @@ Sensor-Fusion-Anomaly/<br/>
 ├── README.md <br/>
 ├── requirements.txt <br/>
 └── .gitignore
-
-## 🧠 How It Works
-1. Synthetic data is generated to simulate 3 correlated sensors.
-2. A small sliding window of recent readings is used to detect anomalies adaptively.
-3. Detected anomalies are plotted live in red.
-
-## How to run
-```bash
-pip install -r requirements.txt
-cd src
-python stream_fusion.py
-
-
-
