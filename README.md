@@ -1,5 +1,5 @@
-# Sensor-Fusion-Anomaly 🚨
-### HAB Detection using Multi-Modal Fusion (Satellite + In-situ + Environmental Metadata) — Live  Demo
+## Sensor-Fusion-Anomaly 🚨
+#### HAB Detection using Multi-Modal Fusion (Satellite + In-situ + Environmental Metadata) 
 
 This repository provides a **research-style prototype** for detecting **harmful algal bloom (HAB) risk** using **multi-modal feature fusion**:
 - **Satellite-derived proxies** (e.g., remote sensing indices / cyanobacteria-aligned signals where available)
@@ -15,7 +15,7 @@ It includes:
 
 ---
 
-## research prototype:
+### research prototype:
 
 - **Explicit modality split**: Satellite vs In-situ vs Metadata
 - **Attention-based fusion**: the model learns which modality matters *per sample*
@@ -25,7 +25,7 @@ It includes:
 
 ---
 
-## Dataset (Real HAB-related data)
+### Dataset (Real HAB-related data)
 The app uses a public EPA dataset intended for modeling lake HAB risk from satellite and survey features.
 The app **downloads the CSVs automatically** to `data/` on first run using URLs embedded in `src/epa_hab_dataset.py`.
 
@@ -34,8 +34,8 @@ You choose the **label column** from the UI. For the most defensible “harmful�
 
 ---
 
-### Project Layout
-
+#### Project Layout
+```bash
 .
 ├── app.py                       # Streamlit UI (live demo + metrics)
 ├── requirements.txt
@@ -46,51 +46,60 @@ You choose the **label column** from the UI. For the most defensible “harmful�
 │   ├── baselines.py              # RF/GB baseline ensemble
 │   └── drift.py                  # lightweight drift score
 └── data/                         # auto-created (downloaded CSVs)
-
+```
 
 ---
 
-## How it works (high-level)
-### 1) Load + Clean
+### How it works
+#### 1) Load + Clean
+```bash
 - Downloads EPA model data CSV
 - Filters out bad label candidates (e.g., sampling index fields)
 - Drops rows where label is missing
 - Converts continuous outcomes into a binary “event” label via a high-quantile threshold (default: 85th percentile)
 - Median-imputes missing feature values to prevent NaNs in training
+```
 
-### 2) Feature Modalities
+#### 2) Feature Modalities
+```bash
 We group numeric features into three buckets:
 - **Satellite**: remote sensing aligned fields / indices
 - **In-situ**: water quality / toxin / cyanobacteria / chlorophyll aligned fields
 - **Metadata**: spatial + context + remaining numeric features
-
+```
 ### 3) Models
+```bash
 #### A) Attention Fusion Model (PyTorch)
 - Each modality passes through its own encoder (MLP)
 - An attention module assigns weights across the three modalities
 - A prediction head outputs HAB risk probability
-
+```
 #### B) Baseline Ensemble (Scikit-learn)
+```bash
 - Random Forest + Gradient Boosting
 - Ensemble probability = average(RF, GB)
+```
 
 ### 4) Evaluation
+```bash
 - Stratified train/test split
 - Metrics reported at your alert threshold:
   - Approx-AUC (fast rank proxy)
   - Precision / Recall / F1
   - Confusion counts (TN/FP/FN/TP)
-
+```
 ### 5) Live Streaming Demo
+```bash
 The app iterates through rows:
 - Shows attention risk + baseline risk
 - Raises alerts based on your threshold
 - Shows modality attention weights
 - Shows drift score over a rolling window
-
+```
 ---
 
 ## Quickstart (Local)
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+```
